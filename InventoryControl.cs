@@ -188,5 +188,18 @@ namespace Inventory_Management_System
             Products.Remove(product);
             Console.WriteLine($"Product {product} has been deleted.");
         }
+        public static void FindProduct()
+        {
+            string name = getName();
+
+            Product product = Products.Find(Product => Product.Name == name);
+
+            if (product == null)
+            {
+                Console.WriteLine("Product not found!");
+                return;
+            }
+            Console.WriteLine(product.Name, product.Quantity, product.Price);
+        }
     }
 }

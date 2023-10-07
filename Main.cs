@@ -17,7 +17,8 @@ namespace Inventory_Management_System
                 Console.WriteLine("2. View All Products");
                 Console.WriteLine("3. Edit Product");
                 Console.WriteLine("4. Delete Product");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Find Product");
+                Console.WriteLine("6. Exit");
 
                 var choice = Console.ReadLine();
 
@@ -36,6 +37,9 @@ namespace Inventory_Management_System
                         InventoryControl.DeleteProduct();
                         break;
                     case "5":
+                        InventoryControl.FindProduct();
+                        break;
+                    case "6":
                         return;
                     default:
                         Console.WriteLine("Invalid choice. Please select a valid option.");
