@@ -85,5 +85,23 @@ namespace Inventory_Management_System
             Products.Add(product);
         }
 
+        public static void ListProducts()
+        {
+            if(Products.Count == 0)
+            {
+                Console.WriteLine("No Products to Print");
+                return;
+            }
+
+            Console.WriteLine("Products:");
+            Console.WriteLine("**********************************************************");
+            foreach (Product product in Products)
+            {
+                Console.WriteLine($"{product.Name}, {product.Price}, {product.Quantity}");
+            }
+            Console.WriteLine("**********************************************************");
+
+        }
+
     }
 }

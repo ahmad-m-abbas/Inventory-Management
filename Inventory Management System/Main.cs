@@ -10,7 +10,30 @@ namespace Inventory_Management_System
     {
         public static void Main(string[] args)
         {
-            InventoryControl.AddProduct();
+            while (true)
+            {
+                Console.WriteLine("Choose an option:");
+                Console.WriteLine("1. Add Product");
+                Console.WriteLine("2. List Products");
+                Console.WriteLine("3. Exit");
+
+                var choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        InventoryControl.AddProduct();
+                        break;
+                    case "2":
+                        InventoryControl.ListProducts();
+                        break;
+                    case "3":
+                        return; 
+                    default:
+                        Console.WriteLine("Invalid choice. Please select a valid option.");
+                        break;
+                }
+            }
         }
     }
 }

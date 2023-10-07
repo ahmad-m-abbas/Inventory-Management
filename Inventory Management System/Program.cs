@@ -3,9 +3,9 @@ namespace Inventory_Management
 {
     class Product
     {
-        string Name { get; set;}
-        decimal Price { get; set;}
-        int Quantity { get; set;}
+        public string Name { get; set;}
+        public decimal Price { get; set;}
+        public int Quantity { get; set;}
 
         public Product(string name, decimal price, int quantity)
         {
