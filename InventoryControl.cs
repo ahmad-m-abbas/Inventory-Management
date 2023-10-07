@@ -102,6 +102,70 @@ namespace Inventory_Management_System
             Console.WriteLine("**********************************************************");
 
         }
+        public static void EditProduct()
+        {
 
+            string name;
+
+            do
+            {
+                Console.WriteLine("Enter the name of Product you want to edit:");
+                name = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(name))
+                {
+                    Console.WriteLine("This string is not valid");
+                }
+
+            } while (string.IsNullOrEmpty(name));
+
+            Product product = Products.Find(Product => Product.Name == name);
+
+            if (product == null)
+            {
+                Console.WriteLine("Product not found!");
+                return;
+            }
+
+            bool flag = true;
+            while (flag)
+            {
+                Console.WriteLine("Enter the number of the thing you want to edit");
+                Console.WriteLine("1. Name");
+                Console.WriteLine("2. Price");
+                Console.WriteLine("3. Quantity");
+                Console.WriteLine("4. Done Editing");
+
+                var choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        Console.Write("Enter new product name: ");
+                        product.Name = Console.ReadLine();
+                        break;
+                    case "2":
+                        Console.Write("Enter new product price: ");
+                        if (decimal.TryParse(Console.ReadLine(), out decimal newPrice) && newPrice > 0)
+                            product.Price = newPrice;
+                        else
+                            Console.WriteLine("Invalid input");
+                        break;
+                    case "3":
+                        Console.Write("Enter new product quantity: ");
+                        if (int.TryParse(Console.ReadLine(), out int newQuantity) && newQuantity > 0)
+                            product.Quantity = newQuantity;
+                        else
+                            Console.WriteLine("Invalid input");
+                        break;
+                    case "4":
+                        flag = false;
+                        break;
+                    default:
+                        Console.WriteLine("Select a valid option.");
+                        break;
+                }
+            }
+        }
     }
 }
