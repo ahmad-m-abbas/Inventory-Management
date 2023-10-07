@@ -11,6 +11,24 @@ namespace Inventory_Management_System
     {
         static List<Product> Products = new List<Product>();
 
+        private static string getName()
+        {
+            string name;
+
+            do
+            {
+                Console.WriteLine("Enter the name of Product you want to edit:");
+                name = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(name))
+                {
+                    Console.WriteLine("This string is not valid");
+                }
+
+            } while (string.IsNullOrEmpty(name));
+
+            return name;
+        }
         public static void AddProduct()
         {
             string name;
@@ -105,19 +123,7 @@ namespace Inventory_Management_System
         public static void EditProduct()
         {
 
-            string name;
-
-            do
-            {
-                Console.WriteLine("Enter the name of Product you want to edit:");
-                name = Console.ReadLine();
-
-                if (string.IsNullOrEmpty(name))
-                {
-                    Console.WriteLine("This string is not valid");
-                }
-
-            } while (string.IsNullOrEmpty(name));
+            string name = getName();
 
             Product product = Products.Find(Product => Product.Name == name);
 
@@ -166,6 +172,21 @@ namespace Inventory_Management_System
                         break;
                 }
             }
+        }
+        public static void DeleteProduct()
+        {
+            string name = getName();
+
+            Product product = Products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+
+            if (product == null)
+            {
+                Console.WriteLine("Product not found!");
+                return;
+            }
+
+            Products.Remove(product);
+            Console.WriteLine($"Product {product} has been deleted.");
         }
     }
 }
